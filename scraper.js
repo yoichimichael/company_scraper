@@ -17,8 +17,15 @@ puppeteer
   .then(html => {
     const $ = cheerio.load(html);
     const companies = [];
-    $('.company_name').each((i, element) => {
-      companies.push($(element).text());
+    // console.log($('.pure-u-1.pure-u-md-18-24')[0].nextSibling.children[1].children[0].data);
+    $('.pure-u-1.pure-u-md-18-24').each((i, element) => {
+      const companyData = {
+        name: element.children[1].children[0].data,
+        url: element.children[2].children[0].attribs.href,
+        location: element.nextSibling.children[0].children[0].data,
+        description: element.nextSibling.children[1].children[0].data,
+      }
+      companies.push(companyData);
     });
     console.log(companies);
   })
