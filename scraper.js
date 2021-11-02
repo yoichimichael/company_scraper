@@ -1,6 +1,7 @@
 const axios = require('axios');
 const cheerio = require('cheerio');
 const puppeteer = require('puppeteer');
+require('dotenv').config();
 
 const url = 'https://blog.wealthfront.com/career-launching-companies-list/#companies-list'
 
@@ -21,7 +22,7 @@ puppeteer
     $('.pure-u-1.pure-u-md-18-24').each((i, element) => {
       const companyData = {
         name: element.children[1].children[0].data,
-        url: element.children[2].children[0].attribs.href,
+      url: element.children[2].children[0].attribs.href,
         location: element.nextSibling.children[0].children[0].data,
         description: element.nextSibling.children[1].children[0].data,
       }
