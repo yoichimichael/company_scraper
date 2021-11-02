@@ -3,6 +3,8 @@ const cheerio = require('cheerio');
 const puppeteer = require('puppeteer');
 require('dotenv').config();
 
+const db_pool = require('./database');
+
 const url = 'https://blog.wealthfront.com/career-launching-companies-list/#companies-list'
 
 puppeteer
